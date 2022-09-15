@@ -74,16 +74,11 @@ const updateVideo = (req, res) => {
 
 //delete video data
 
-const deletevideo = async (req, res) => {
-  const { videoid } = req.params;
-  try {
-    const video = await VideoModel.findOneAndDelete(videoid);
-    await video.remove();
-    res.status(200).json({ message: "Video Deleted" });
-  } catch (error) {
-    res.status(400).send(error.message);
-  }
-};
+const deletevideo =  async (req,res) => {
+  const videoid = req.params.videoid
+  await VideoModel.findByIdAndRemove(videoid).exec()
+  res.send({ message: "Video was Deleted successfully." })
+}
 
 module.exports = {
   createVideo,

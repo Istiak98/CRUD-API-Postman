@@ -6,16 +6,24 @@ const {
   deletevideo,
   updateVideo,
 } = require("../controllers/VideoController");
+const requireAuth = require("../middelware/requireAuth");
 // const VideoModel = require("../models/VideoModel");
+
 
 //express app
 const router = express();
+
+
+//middleware
+// router.use(requireAuth)
+
+
 
 //list of videos
 router.get("/", getAllVideos);
 
 //create video
-router.post("/", createVideo);
+router.post("/", requireAuth,createVideo);
 
 //get single video
 router.get("/:videoid", getSingleVideo);
