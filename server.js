@@ -25,7 +25,7 @@ app.post("/", (req, res) => {
 // connect to DB
 mongoose
   .connect(
-    "mongodb+srv://miniYT:miniYT@cluster0.kydip.mongodb.net/?retryWrites=true&w=majority"
+    "mongodb+srv://miniYT:miniYT@cluster0.kydip.mongodb.net/miniYT?retryWrites=true&w=majority"
   )
   .then(() => {
     // listen for request
